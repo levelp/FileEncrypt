@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.io.IOException;
 
 /**
  * Шифрование файлов
@@ -12,8 +13,15 @@ public class MainForm {
 
     public MainForm() {
         encryptButton.addActionListener(actionEvent -> {
-            Encoder encoder = new Encoder(srcFileName.getText(),
-                    dstFileName.getText(), password.getPassword());
+            try {
+                Encoder encoder = new Encoder(srcFileName.getText(),
+                        dstFileName.getText(), password.getPassword());
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(
+                        null, e.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                //e.printStackTrace();
+            }
         });
     }
 
