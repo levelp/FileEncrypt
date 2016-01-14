@@ -12,7 +12,8 @@ public class MainForm {
 
     public MainForm() {
         encryptButton.addActionListener(actionEvent -> {
-
+            Encoder encoder = new Encoder(srcFileName.getText(),
+                    dstFileName.getText(), password.getPassword());
         });
     }
 
